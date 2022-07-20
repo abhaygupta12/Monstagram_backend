@@ -1,9 +1,8 @@
-
 const cors = require('cors');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 
 const {MONGODB_URI} = require('./config');
@@ -53,7 +52,7 @@ app.use(require('./routes/postRoute'));
 app.use(require('./routes/userRoute'));
 app.use(cors());
 
-app.listen(PORT,()=>{
+app.listen(port,()=>{
     console.log("Server started ")
 })
 
