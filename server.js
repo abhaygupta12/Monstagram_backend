@@ -1,19 +1,22 @@
+
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 
+
 const {MONGODB_URI} = require('./config');
 // require('./models/user_model');
 // app.use(express.json());
 // app.use(require('./routes/authentication'));
-// var WebSocketServer = require('ws').Server; 
+var WebSocketServer = require('ws').Server; 
 
 // //creating a websocket server at port 9090 
-// var wss = new WebSocketServer({server: app}); 
+var wss = new WebSocketServer({server: app}); 
 
 // //all connected to the server users 
-// var users = {};
+var users = {};
 
 
 mongoose.connect(MONGODB_URI);
@@ -37,17 +40,18 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.on('connection',(socket)=>{
-    console.log("a user connect");
-    socket.on("message",(ms) =>{
-        app.emit("message",ms)
-    })
-})
+// app.on('connection',(socket)=>{
+//     console.log("a user connect");
+//     socket.on("message",(ms) =>{
+//         app.emit("message",ms)
+//     })
+// })
 
 app.use(express.json());
 app.use(require('./routes/authentication'));
 app.use(require('./routes/postRoute'));
 app.use(require('./routes/userRoute'));
+app.use(cors());
 
 app.listen(PORT,()=>{
     console.log("Server started ")
