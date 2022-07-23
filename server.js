@@ -1,4 +1,4 @@
-// const cors = require('cors');
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -51,7 +51,7 @@ app.use(express.json());
 app.use(require('./routes/authentication'));
 app.use(require('./routes/postRoute'));
 app.use(require('./routes/userRoute'));
-// app.use(cors());
+app.use(cors());
 
 app.listen(port,()=>{
     console.log("Server started ")
