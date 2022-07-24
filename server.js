@@ -2,8 +2,6 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-// const port = process.env.PORT || 3000;
-const port = 80
 
 
 const {MONGODB_URI} = require('./config');
@@ -31,15 +29,6 @@ require('./models/user_model');
 require('./models/post_model');
 
 
-
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", '*');
-//     res.header("Access-Control-Allow-Credentials", true);
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-//     next();
-// });
-
 // app.on('connection',(socket)=>{
 //     console.log("a user connect");
 //     socket.on("message",(ms) =>{
@@ -54,14 +43,17 @@ app.use(require('./routes/userRoute'));
 // app.use(cors());
 
 app.use(function(req, res, next) {
-    // res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Origin", '*');
+    // res.header("Access-Control-Allow-Credentials", true);
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
     next();
 });
 
-app.listen(port,()=>{
-    console.log("Server started ")
-})
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, err => {
+    if(err) throw err;
+    console.log("%c Server running", "color: green");
+});
 
