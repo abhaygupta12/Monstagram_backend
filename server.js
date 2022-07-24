@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 // const port = process.env.PORT || 3000;
-const port = 443
+const port = 80
 
 
 const {MONGODB_URI} = require('./config');
