@@ -52,7 +52,7 @@ router.put('/follow', protectedResource, (req, res) => {
 });
 
 router.put('/unfollow', protectedResource, (req, res) => {
-    //Scenario: Loggedin user is trying to follow a non-loggedin user
+    //Scenario: Loggedin user is trying to unfollow a non-loggedin user
 
     //req.body.followId = userId of not loggedin user
     UserModel.findByIdAndUpdate(req.body.unfollowId, {

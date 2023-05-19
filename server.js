@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 
 const {MONGODB_URI} = require('./config');
-// require('./models/user_model');
+// require('./models/user_model');o
 // app.use(express.json());
 // app.use(require('./routes/authentication'));
 // var WebSocketServer = require('ws').Server; 
